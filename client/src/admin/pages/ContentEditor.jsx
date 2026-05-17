@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   DndContext,
   PointerSensor,
@@ -15,7 +14,6 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import {
-  ArrowLeft,
   Save,
   CheckCircle,
   AlertCircle,
@@ -27,14 +25,13 @@ import {
   X,
 } from 'lucide-react';
 import { api } from '../api.js';
-import { useAuth } from '../AuthContext.jsx';
+import AdminShell from '../components/AdminShell.jsx';
 import { SECTION_EDITORS, SECTION_LABELS } from '../editors/SectionEditors.jsx';
 import { SETTINGS_EDITORS, SETTINGS_LABELS } from '../editors/SettingsEditors.jsx';
 
 const ADDABLE_TYPES = ['hero', 'approche', 'offres', 'methode', 'references', 'temoignages', 'apropos', 'contact'];
 
 export default function ContentEditor() {
-  const { user, logout } = useAuth();
   const [content, setContent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selection, setSelection] = useState(null);
@@ -189,34 +186,23 @@ export default function ContentEditor() {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-cream flex flex-col">
-      <header className="border-b border-cream-dark bg-white sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link to="/admin" className="inline-flex items-center gap-1.5 text-sm text-mute hover:text-ochre">
-              <ArrowLeft size={14} /> Tableau de bord
-            </Link>
-            <span className="text-cream-dark">|</span>
-            <span className="font-display text-lg text-forest">Édition du contenu</span>
-          </div>
-          <div className="flex items-center gap-3">
-            {dirty && <span className="text-xs text-ochre">● Modifications non enregistrées</span>}
-            <button
-              type="button"
-              onClick={save}
-              disabled={!dirty || saving}
-              className="inline-flex items-center gap-2 rounded-full bg-ochre text-white px-5 py-2 text-sm font-medium hover:bg-ochre/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-            >
-              <Save size={14} />
-              {saving ? 'Enregistrement…' : 'Enregistrer'}
-            </button>
-            <span className="text-xs text-mute hidden md:inline">{user?.name}</span>
-            <button onClick={logout} className="text-xs text-mute hover:text-ochre">Déconnexion</button>
-          </div>
-        </div>
-      </header>
+  const headerActions = (
+    <>
+      {dirty && <span className="text-xs text-ochre">● Modifications non enregistrées</span>}
+      <button
+        type="button"
+        onClick={save}
+        disabled={!dirty || saving}
+        className="inline-flex items-center gap-2 rounded-full bg-ochre text-white px-5 py-2 text-sm font-medium hover:bg-ochre/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+      >
+        <Save size={14} />
+        {saving ? 'Enregistrement…' : 'Enregistrer'}
+      </button>
+    </>
+  );
 
+  return (
+    <AdminShell title="Édition du contenu" actions={headerActions}>
       <div className="flex-1 max-w-7xl mx-auto w-full px-6 py-8 grid grid-cols-12 gap-8">
         <aside className="col-span-12 md:col-span-3 lg:col-span-3">
           <SidebarGroup title="Réglages">
@@ -290,7 +276,7 @@ export default function ContentEditor() {
       {addModalOpen && (
         <AddSectionModal onClose={() => setAddModalOpen(false)} onPick={addSection} />
       )}
-    </div>
+    </AdminShell>
   );
 }
 

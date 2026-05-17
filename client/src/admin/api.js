@@ -1,4 +1,8 @@
 // Tiny fetch wrapper for admin API calls. Cookies are sent automatically.
+// On 401 outside the login flow, force a redirect to /admin/login so the user
+// re-authenticates instead of seeing cryptic errors.
+
+const AUTH_FLOW_PATHS = new Set(['/auth/login', '/auth/me']);
 
 async function request(path, options = {}) {
   const res = await fetch(`/api${path}`, {
@@ -9,6 +13,15 @@ async function request(path, options = {}) {
   const isJson = res.headers.get('content-type')?.includes('application/json');
   const body = isJson ? await res.json() : null;
   if (!res.ok) {
+    if (
+      res.status === 401 &&
+      !AUTH_FLOW_PATHS.has(path) &&
+      typeof window !== 'undefined' &&
+      !window.location.pathname.startsWith('/admin/login')
+    ) {
+      const next = encodeURIComponent(window.location.pathname);
+      window.location.assign(`/admin/login?next=${next}`);
+    }
     const err = new Error(body?.error || `HTTP ${res.status}`);
     err.status = res.status;
     err.body = body;

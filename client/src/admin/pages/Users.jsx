@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Plus, Trash2, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { Plus, Trash2, X, CheckCircle, AlertCircle } from 'lucide-react';
 import { api } from '../api.js';
 import { useAuth } from '../AuthContext.jsx';
+import AdminShell from '../components/AdminShell.jsx';
 
 export default function Users() {
-  const { user: currentUser, logout } = useAuth();
+  const { user: currentUser } = useAuth();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
@@ -59,23 +59,7 @@ export default function Users() {
   };
 
   return (
-    <div className="min-h-screen bg-cream flex flex-col">
-      <header className="border-b border-cream-dark bg-white sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link to="/admin" className="inline-flex items-center gap-1.5 text-sm text-mute hover:text-ochre">
-              <ArrowLeft size={14} /> Tableau de bord
-            </Link>
-            <span className="text-cream-dark">|</span>
-            <span className="font-display text-lg text-forest">Utilisateurs</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-mute hidden md:inline">{currentUser?.name}</span>
-            <button onClick={logout} className="text-xs text-mute hover:text-ochre">Déconnexion</button>
-          </div>
-        </div>
-      </header>
-
+    <AdminShell title="Utilisateurs">
       <main className="flex-1 max-w-3xl mx-auto w-full px-6 py-8">
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm text-mute">Comptes ayant accès au back-office.</p>
@@ -146,7 +130,7 @@ export default function Users() {
           <span>{toast.message}</span>
         </div>
       )}
-    </div>
+    </AdminShell>
   );
 }
 

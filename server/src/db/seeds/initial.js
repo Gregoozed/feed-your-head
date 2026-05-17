@@ -1,6 +1,6 @@
 import argon2 from 'argon2';
 import { randomUUID } from 'node:crypto';
-import { SITE_CONFIG } from '../../../../client/src/config/site.js';
+import { SITE_CONFIG } from './seed_data.js';
 
 export async function seed(knex) {
   // --- users ---

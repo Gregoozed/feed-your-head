@@ -2,6 +2,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import compression from 'compression';
 
 import authRouter from './routes/auth.js';
 import contentRouter from './routes/content.js';
@@ -18,6 +20,29 @@ const clientDist = path.resolve(__dirname, '../../client/dist');
 
 const app = express();
 
+// Trust reverse proxy headers (nginx) so req.ip works behind it in prod.
+app.set('trust proxy', isProd() ? 1 : false);
+
+app.use(
+  helmet({
+    contentSecurityPolicy: isProd()
+      ? {
+          useDefaults: true,
+          directives: {
+            // Allow Google Fonts + same-origin images (the SVG favicon and /uploads).
+            'font-src': ["'self'", 'https://fonts.gstatic.com', 'data:'],
+            'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+            'img-src': ["'self'", 'data:', 'https://images.unsplash.com'],
+            'script-src': ["'self'"],
+          },
+        }
+      : false, // dev: CSP off so Vite HMR/eval works
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: 'same-site' },
+  })
+);
+
+app.use(compression());
 app.use(express.json({ limit: '256kb' }));
 app.use(cookieParser());
 

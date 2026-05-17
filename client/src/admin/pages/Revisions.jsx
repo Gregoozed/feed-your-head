@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, RotateCcw, Eye, CheckCircle, AlertCircle, X } from 'lucide-react';
+import { RotateCcw, Eye, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { api } from '../api.js';
-import { useAuth } from '../AuthContext.jsx';
+import AdminShell from '../components/AdminShell.jsx';
 import { SECTION_LABELS } from '../editors/SectionEditors.jsx';
 import { SETTINGS_LABELS } from '../editors/SettingsEditors.jsx';
 
 export default function Revisions() {
-  const { user, logout } = useAuth();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [previewing, setPreviewing] = useState(null);
@@ -47,23 +45,7 @@ export default function Revisions() {
   };
 
   return (
-    <div className="min-h-screen bg-cream flex flex-col">
-      <header className="border-b border-cream-dark bg-white sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link to="/admin" className="inline-flex items-center gap-1.5 text-sm text-mute hover:text-ochre">
-              <ArrowLeft size={14} /> Tableau de bord
-            </Link>
-            <span className="text-cream-dark">|</span>
-            <span className="font-display text-lg text-forest">Révisions</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-mute hidden md:inline">{user?.name}</span>
-            <button onClick={logout} className="text-xs text-mute hover:text-ochre">Déconnexion</button>
-          </div>
-        </div>
-      </header>
-
+    <AdminShell title="Révisions">
       <main className="flex-1 max-w-4xl mx-auto w-full px-6 py-8">
         <p className="text-sm text-mute mb-6">
           Historique des 50 dernières modifications par élément. Chaque enregistrement crée automatiquement une révision.
@@ -125,7 +107,7 @@ export default function Revisions() {
           <span>{toast.message}</span>
         </div>
       )}
-    </div>
+    </AdminShell>
   );
 }
 
