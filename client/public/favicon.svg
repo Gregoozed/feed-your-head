@@ -1,7 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Square mark: forest background, italic F in cream, ocre sprout growing from top-right. -->
   <rect width="64" height="64" rx="14" fill="#1a3a2e"/>
-  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
+  <text x="46%" y="62%" text-anchor="middle" dominant-baseline="middle"
         font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600"
-        font-size="34" fill="#f5f1ea">F</text>
-  <circle cx="48" cy="46" r="3" fill="#c47a28"/>
+        font-size="38" fill="#f5f1ea">F</text>
+  <!-- sprout: thin stem + two asymmetric leaves -->
+  <g transform="translate(44,10)" fill="none" stroke="#c47a28" stroke-linecap="round">
+    <line x1="0" y1="12" x2="0" y2="3" stroke-width="1.4"/>
+  </g>
+  <g transform="translate(44,10)" fill="#c47a28">
+    <!-- left leaf, lower -->
+    <path d="M 0 7 C -4 5 -5 1 -3 0 C -1 1 0 4 0 7 Z"/>
+    <!-- right leaf, upper -->
+    <path d="M 0 4 C 4 2 5 -2 3 -3 C 1 -1 0 1 0 4 Z"/>
+  </g>
 </svg>
