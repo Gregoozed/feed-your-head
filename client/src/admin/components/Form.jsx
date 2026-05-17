@@ -93,7 +93,8 @@ export function CheckboxField({ label, value, onChange, description }) {
  * - label: header label
  * - addLabel: button label
  */
-export function ListField({ items = [], onChange, newItem, renderItem, label, addLabel = 'Ajouter' }) {
+export function ListField({ items, onChange, newItem, renderItem, label, addLabel = 'Ajouter' }) {
+  if (!Array.isArray(items)) items = [];
   const update = (idx, value) => {
     const next = items.slice();
     next[idx] = value;

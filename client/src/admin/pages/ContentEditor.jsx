@@ -52,26 +52,41 @@ export default function ContentEditor() {
     return c;
   };
 
-  useEffect(() => {
-    reload().then((c) => {
-      if (c?.sections?.[0]) setSelection({ kind: 'section', id: c.sections[0].id });
-    });
-  }, []);
+  const deriveDraft = (next, c) => {
+    if (!c || !next) return null;
+    if (next.kind === 'section') {
+      const s = c.sections.find((x) => x.id === next.id);
+      return s ? structuredClone(s.data) : null;
+    }
+    return structuredClone(c.settings[next.id]);
+  };
+
+  const switchTo = (next) => {
+    setSelection(next);
+    setDraft(deriveDraft(next, content));
+    setDirty(false);
+  };
 
   useEffect(() => {
-    if (!content || !selection) {
-      setDraft(null);
-      setDirty(false);
-      return;
-    }
-    if (selection.kind === 'section') {
-      const s = content.sections.find((x) => x.id === selection.id);
-      setDraft(s ? structuredClone(s.data) : null);
-    } else {
-      setDraft(structuredClone(content.settings[selection.id]));
-    }
+    reload().then((c) => {
+      if (c?.sections?.[0]) {
+        const initial = { kind: 'section', id: c.sections[0].id };
+        setSelection(initial);
+        setDraft(deriveDraft(initial, c));
+        setDirty(false);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // When content is reloaded (after save/reorder/etc.), re-derive draft from fresh content.
+  useEffect(() => {
+    if (!content || !selection) return;
+    setDraft(deriveDraft(selection, content));
     setDirty(false);
-  }, [selection, content]);
+    // Only react to content updates, not selection (switchTo handles that).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content]);
 
   const flash = (kind, message) => {
     setToast({ kind, message });
@@ -134,7 +149,7 @@ export default function ContentEditor() {
     try {
       const res = await api.createSection(type);
       await reload();
-      setSelection({ kind: 'section', id: res.section.id });
+      switchTo({ kind: 'section', id: res.section.id });
       setAddModalOpen(false);
       flash('success', `Section « ${SECTION_LABELS[type]} » ajoutée.`);
     } catch (err) {
@@ -148,7 +163,8 @@ export default function ContentEditor() {
       await api.deleteSection(section.id);
       const c = await reload();
       if (selection?.kind === 'section' && selection.id === section.id) {
-        setSelection(c.sections[0] ? { kind: 'section', id: c.sections[0].id } : null);
+        if (c.sections[0]) switchTo({ kind: 'section', id: c.sections[0].id });
+        else { setSelection(null); setDraft(null); }
       }
       flash('success', 'Section supprimée.');
     } catch (err) {
@@ -208,7 +224,7 @@ export default function ContentEditor() {
               <SidebarItem
                 key={s.key}
                 active={selection?.kind === 'settings' && selection.id === s.key}
-                onClick={() => maybeSwitch(dirty, () => setSelection({ kind: 'settings', id: s.key }))}
+                onClick={() => maybeSwitch(dirty, () => switchTo({ kind: 'settings', id: s.key }))}
                 label={s.label}
               />
             ))}
@@ -233,7 +249,7 @@ export default function ContentEditor() {
                     key={s.id}
                     section={s}
                     active={selection?.kind === 'section' && selection.id === s.id}
-                    onSelect={() => maybeSwitch(dirty, () => setSelection({ kind: 'section', id: s.id }))}
+                    onSelect={() => maybeSwitch(dirty, () => switchTo({ kind: 'section', id: s.id }))}
                     onToggleVisible={() => toggleVisible(s)}
                     onDelete={() => deleteSection(s)}
                   />
