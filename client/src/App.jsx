@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ContentProvider } from './contexts/ContentContext.jsx';
 import SiteRenderer from './components/SiteRenderer.jsx';
+import LegalPage from './components/LegalPage.jsx';
 
 const AdminApp = lazy(() => import('./admin/AdminApp.jsx'));
 
@@ -15,6 +16,14 @@ export default function App() {
             <Suspense fallback={<AdminFallback />}>
               <AdminApp />
             </Suspense>
+          }
+        />
+        <Route
+          path="/mentions-legales"
+          element={
+            <ContentProvider>
+              <LegalPage />
+            </ContentProvider>
           }
         />
         <Route

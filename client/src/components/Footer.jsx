@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useSettings } from '../contexts/ContentContext.jsx';
 import Logo from './Logo.jsx';
 
@@ -29,6 +30,12 @@ export default function Footer() {
           >
             {contact.email}
           </a>
+          <Link
+            to="/mentions-legales"
+            className="hover:text-ochre transition-colors"
+          >
+            Mentions légales
+          </Link>
           <span>
             © {year} {brand.name}. {footer.rights}
           </span>
