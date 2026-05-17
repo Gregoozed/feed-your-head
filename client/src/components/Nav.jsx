@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useSettings } from '../contexts/ContentContext.jsx';
+import Logo from './Logo.jsx';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -11,12 +12,11 @@ export default function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-cream/80 backdrop-blur-md border-b border-cream-dark/60">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 md:h-20 flex items-center justify-between">
-        <a
-          href="#top"
-          className="font-display text-lg md:text-xl tracking-tight text-forest"
-        >
-          {brand.name}
-          <span className="text-ochre">.</span>
+        <a href="#top" aria-label={brand.name} className="flex items-center text-forest">
+          {/* full lockup on tablet/desktop */}
+          <Logo variant="lockup" className="hidden sm:block h-9 w-auto" />
+          {/* mark only on mobile */}
+          <Logo variant="mark" className="sm:hidden h-9 w-9" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Navigation principale">
