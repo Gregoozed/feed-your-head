@@ -147,6 +147,21 @@ railway run --service <nom> -- sh -c 'cat > /data/feedyourhead.sqlite' \
 
 À faire **avant** de configurer le domaine (sinon mini-coupure).
 
+## Mot de passe admin oublié / verrouillé
+
+Mécanisme de reset par variable d'environnement (pas besoin d'infra mail) :
+
+1. Railway → Variables : vérifie/ajuste `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_NAME`
+2. Ajoute une variable **`ADMIN_RESET=true`**
+3. Le service redéploie → au boot, `bootstrap.js` :
+   - si un compte avec `ADMIN_EMAIL` existe → réinitialise son mot de passe sur `ADMIN_PASSWORD`
+   - sinon → crée le compte
+   - logs : `[bootstrap] ADMIN_RESET: …`
+4. Connecte-toi à `/admin` avec `ADMIN_EMAIL` / `ADMIN_PASSWORD`
+5. **Supprime la variable `ADMIN_RESET`** (sinon le reset rejoue à chaque déploiement)
+
+Les identifiants courants sont toujours lisibles dans Railway → Variables (`ADMIN_EMAIL` / `ADMIN_PASSWORD`).
+
 ## Sécurité — checklist avant ouverture publique
 
 - [ ] `JWT_SECRET` est une vraie chaîne aléatoire (≥ 48 chars)
