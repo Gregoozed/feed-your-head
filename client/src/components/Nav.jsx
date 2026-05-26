@@ -37,7 +37,7 @@ export default function Nav() {
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-forest text-cream px-5 py-2.5 text-sm font-medium hover:bg-forest-light transition-colors"
           >
-            Échanger
+            Échangeons
           </a>
         </nav>
 
@@ -70,7 +70,7 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-forest text-cream px-5 py-3 text-sm font-medium"
             >
-              Échanger
+              Échangeons
             </a>
           </div>
         </div>
