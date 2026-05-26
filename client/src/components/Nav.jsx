@@ -7,7 +7,8 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const settings = useSettings();
   if (!settings) return null;
-  const { brand, nav } = settings;
+  const { brand } = settings;
+  const nav = (settings.nav ?? []).filter((item) => !item.hidden);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-cream/80 backdrop-blur-md border-b border-cream-dark/60">

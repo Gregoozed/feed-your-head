@@ -57,12 +57,20 @@ function NavEditor({ value, onChange }) {
       <ListField
         items={value ?? []}
         onChange={onChange}
-        newItem={() => ({ label: 'Nouveau lien', href: '#' })}
+        newItem={() => ({ label: 'Nouveau lien', href: '#', hidden: false })}
         addLabel="Ajouter un lien"
         renderItem={(item, setItem) => (
-          <div className="grid grid-cols-2 gap-3">
-            <TextField label="Libellé" value={item.label} onChange={(v) => setItem({ ...item, label: v })} />
-            <TextField label="Ancre (#section)" value={item.href} onChange={(v) => setItem({ ...item, href: v })} />
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
+              <TextField label="Libellé" value={item.label} onChange={(v) => setItem({ ...item, label: v })} />
+              <TextField label="Ancre (#section)" value={item.href} onChange={(v) => setItem({ ...item, href: v })} />
+            </div>
+            <CheckboxField
+              label="Masquer ce lien du menu"
+              description="Le lien reste enregistré mais n'apparaît pas dans la navigation du site."
+              value={item.hidden}
+              onChange={(v) => setItem({ ...item, hidden: v })}
+            />
           </div>
         )}
       />
