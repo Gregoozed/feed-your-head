@@ -4,10 +4,13 @@
 # - start:   migrate+seed run automatically at boot via server/src/db/bootstrap.js
 
 [phases.setup]
-nixPkgs = ["nodejs_20", "python3"]
+nixPkgs = ["nodejs_22", "python3"]
 
 [phases.install]
-cmds = ["npm ci --include=dev"]
+# npm install (not ci): regenerates platform-specific optional deps so the
+# Linux rolldown native binding (@rolldown/binding-linux-x64-gnu) is fetched,
+# working around npm bug #4828 (lockfile generated on macOS).
+cmds = ["npm install --include=dev --include=optional"]
 
 [phases.build]
 cmds = ["npm run build"]
