@@ -14,7 +14,7 @@ export const SITE_CONFIG = {
   },
   contact: {
     email: 'contact@feedyourhead.fr',
-    linkedin: 'https://www.linkedin.com/in/feedyourhead',
+    linkedin: 'https://www.linkedin.com/in/virginie-coulange/',
     calendlyUrl: 'https://calendly.com/feedyourhead/echange',
     formspreeEndpoint: 'https://formspree.io/f/YOUR_ID_HERE',
   },
@@ -22,6 +22,7 @@ export const SITE_CONFIG = {
     { label: 'Approche', href: '#approche' },
     { label: 'Offres', href: '#offres' },
     { label: 'Méthode', href: '#methode' },
+    { label: 'À propos', href: '#apropos' },
     { label: 'Témoignages', href: '#temoignages' },
   ],
   hero: {
@@ -47,34 +48,76 @@ export const SITE_CONFIG = {
     { number: '30+', label: 'organisations accompagnées' },
     { number: '100%', label: 'missions sur-mesure' },
   ],
-  offresIntro: {
-    heading: { before: 'Trois manières de', italic: 'travailler', after: 'ensemble.' },
-    subtitle:
-      'Une mission ponctuelle, un accompagnement dans la durée ou une transformation à piloter — chaque intervention est calibrée à votre contexte.',
+  offres: {
+    kicker: 'En partenariat avec Twelv',
+    heading: { before: '4 offres.', italic: '1 ambition.' },
+    subtitle: 'Capitaliser les savoirs en performance durable.',
+    pitch:
+      "Transmettre, c'est assurer l'avenir de votre entreprise. Avec Feed Your Head et Twelv, alliez tech et humain pour ancrer durablement les compétences au sein de vos équipes.",
+    formulas: [
+      {
+        num: '01',
+        duration: '20 jours',
+        title: 'Transfert des savoirs critiques',
+        verb: 'Accélérer',
+        verbDesc: "l'intégration et la montée en compétences.",
+        tagline: 'Intervention express, impact immédiat.',
+        bullets: [
+          'Diagnostic express des savoirs critiques',
+          'Identification des priorités',
+          'Ateliers ciblés & pragmatiques',
+          'Transfert accéléré vers Twelv',
+          "Plan d'action express et sécurisé",
+        ],
+      },
+      {
+        num: '02',
+        duration: '30 jours',
+        title: 'Managers : transmetteurs de savoirs',
+        verb: 'Sécuriser',
+        verbDesc: 'la transmission des savoirs.',
+        tagline: 'Les piliers de la performance.',
+        bullets: [
+          'Diagnostic des pratiques managériales',
+          'Formation des managers',
+          "Mise en place de rituels et d'outils simples",
+          'Twelv comme base de transmission',
+        ],
+      },
+      {
+        num: '03',
+        duration: '40 jours',
+        title: 'La continuité des savoirs',
+        verb: 'Mobiliser',
+        verbDesc: 'les équipes dans la transmission.',
+        tagline: 'La bonne connaissance, au bon niveau, à chaque étape.',
+        bullets: [
+          'Diagnostic des processus',
+          'Conception des parcours de transmission',
+          'Formation des relais',
+          'Déploiement multi-équipes de Twelv',
+          'Pilotage & optimisation des parcours',
+        ],
+      },
+      {
+        num: '04',
+        duration: '60 jours',
+        title: 'Gestion intégrale du savoir',
+        verb: 'Performer',
+        verbDesc: "durablement grâce à l'intelligence collective.",
+        tagline: 'Visibilité totale des savoirs.',
+        bullets: [
+          'Diagnostic complet de la gestion des savoirs',
+          'Architecture de transmission, modélisation des flux de savoirs',
+          'Déploiement et structuration de Twelv',
+          'Formation & accompagnement',
+          'Pilotage stratégique des savoirs',
+        ],
+      },
+    ],
+    closer: 'Pas de réussite technologique sans aventure humaine.',
+    cta: { label: 'Échanger sur ce partenariat', href: '#contact' },
   },
-  offres: [
-    {
-      num: '01',
-      title: 'Audit RH',
-      description:
-        "État des lieux structuré et sans complaisance des pratiques RH de votre organisation.",
-      bullets: ['Diagnostic 360°', 'Restitution actionnable', 'Plan de route partagé'],
-    },
-    {
-      num: '02',
-      title: 'Accompagnement managers & DRH',
-      description:
-        "Appui opérationnel sur la durée, en présentiel ou à distance. Sparring partner pour les décisions sensibles.",
-      bullets: ['Coaching individuel', 'Co-développement', 'Médiation'],
-    },
-    {
-      num: '03',
-      title: 'Conduite du changement',
-      description:
-        "Piloter une transformation qui engage réellement les équipes plutôt que de la subir.",
-      bullets: ['Cadrage stratégique', 'Ingénierie participative', 'Suivi & ancrage'],
-    },
-  ],
   methodeIntro: {
     heading: { before: 'Comment', italic: 'ça se passe.' },
     subtitle: 'Un cadre clair, du premier échange à la fin de mission.',

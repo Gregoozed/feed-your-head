@@ -40,7 +40,7 @@ export async function seed(knex) {
     },
     {
       type: 'offres',
-      data: { intro: SITE_CONFIG.offresIntro, items: SITE_CONFIG.offres },
+      data: SITE_CONFIG.offres,
     },
     {
       type: 'methode',

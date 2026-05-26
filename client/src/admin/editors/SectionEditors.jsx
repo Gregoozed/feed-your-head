@@ -75,31 +75,44 @@ function ApprocheEditor({ data, onChange }) {
 }
 
 // ──────────────────────────────────────────────────────────────────
-//  OFFRES
+//  OFFRES (partenariat Twelv — 4 formules en onglets)
 // ──────────────────────────────────────────────────────────────────
 function OffresEditor({ data, onChange }) {
-  const intro = data.intro ?? { heading: {}, subtitle: '' };
   return (
     <>
-      <Section title="Introduction">
-        <TextField label="Titre — avant l'italique" value={intro.heading?.before} onChange={(v) => onChange(setIn(data, ['intro', 'heading', 'before'], v))} />
-        <TextField label="Mot en italique" value={intro.heading?.italic} onChange={(v) => onChange(setIn(data, ['intro', 'heading', 'italic'], v))} />
-        <TextField label="Titre — après l'italique" value={intro.heading?.after} onChange={(v) => onChange(setIn(data, ['intro', 'heading', 'after'], v))} />
-        <TextAreaField label="Sous-titre" value={intro.subtitle} onChange={(v) => onChange(setIn(data, ['intro', 'subtitle'], v))} />
+      <Section title="En-tête">
+        <TextField label="Kicker (uppercase ocre)" value={data.kicker} onChange={(v) => onChange(set(data, 'kicker', v))} />
+        <TextField label="Titre — avant l'italique" value={data.heading?.before} onChange={(v) => onChange(setIn(data, ['heading', 'before'], v))} />
+        <TextField label="Mot en italique (ocre)" value={data.heading?.italic} onChange={(v) => onChange(setIn(data, ['heading', 'italic'], v))} />
+        <TextAreaField label="Sous-titre" value={data.subtitle} onChange={(v) => onChange(set(data, 'subtitle', v))} rows={2} />
+        <TextAreaField label="Pitch" value={data.pitch} onChange={(v) => onChange(set(data, 'pitch', v))} rows={4} />
       </Section>
-      <Section title="Offres">
+      <Section title="Formules (onglets)">
         <ListField
-          items={data.items ?? []}
-          onChange={(items) => onChange(set(data, 'items', items))}
-          newItem={() => ({ num: '', title: '', description: '', bullets: ['', '', ''] })}
-          addLabel="Ajouter une offre"
+          items={data.formulas ?? []}
+          onChange={(items) => onChange(set(data, 'formulas', items))}
+          newItem={() => ({
+            num: '',
+            duration: '',
+            title: '',
+            verb: '',
+            verbDesc: '',
+            tagline: '',
+            bullets: [''],
+          })}
+          addLabel="Ajouter une formule"
           renderItem={(item, setItem) => (
             <div className="space-y-3">
-              <div className="grid grid-cols-3 gap-3">
-                <TextField label="N°" value={item.num} onChange={(v) => setItem({ ...item, num: v })} />
-                <div className="col-span-2"><TextField label="Titre" value={item.title} onChange={(v) => setItem({ ...item, title: v })} /></div>
+              <div className="grid grid-cols-2 gap-3">
+                <TextField label="N° (ex. 01)" value={item.num} onChange={(v) => setItem({ ...item, num: v })} />
+                <TextField label="Durée (ex. 20 jours)" value={item.duration} onChange={(v) => setItem({ ...item, duration: v })} />
               </div>
-              <TextAreaField label="Description" value={item.description} onChange={(v) => setItem({ ...item, description: v })} rows={2} />
+              <TextField label="Titre" value={item.title} onChange={(v) => setItem({ ...item, title: v })} />
+              <div className="grid grid-cols-2 gap-3">
+                <TextField label="Verbe d'action (ex. Accélérer)" value={item.verb} onChange={(v) => setItem({ ...item, verb: v })} />
+                <TextField label="Tagline (italique)" value={item.tagline} onChange={(v) => setItem({ ...item, tagline: v })} />
+              </div>
+              <TextAreaField label="Description du verbe" value={item.verbDesc} onChange={(v) => setItem({ ...item, verbDesc: v })} rows={2} />
               <ListField
                 items={item.bullets ?? []}
                 onChange={(b) => setItem({ ...item, bullets: b })}
@@ -111,6 +124,13 @@ function OffresEditor({ data, onChange }) {
             </div>
           )}
         />
+      </Section>
+      <Section title="Bandeau final">
+        <TextAreaField label="Phrase de clôture" value={data.closer} onChange={(v) => onChange(set(data, 'closer', v))} rows={2} />
+      </Section>
+      <Section title="Bouton d'appel à l'action">
+        <TextField label="Libellé" value={data.cta?.label} onChange={(v) => onChange(setIn(data, ['cta', 'label'], v))} />
+        <TextField label="Lien (ancre ou URL)" value={data.cta?.href} onChange={(v) => onChange(setIn(data, ['cta', 'href'], v))} />
       </Section>
     </>
   );

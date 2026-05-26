@@ -1,5 +1,6 @@
 import { useContent } from '../contexts/ContentContext.jsx';
 import Intro from './Intro.jsx';
+import CookieBanner from './CookieBanner.jsx';
 import Nav from './Nav.jsx';
 import ScrollUI from './ScrollUI.jsx';
 import Footer from './Footer.jsx';
@@ -63,6 +64,7 @@ export default function SiteRenderer() {
         })}
       </main>
       <Footer />
+      <CookieBanner />
     </>
   );
 }

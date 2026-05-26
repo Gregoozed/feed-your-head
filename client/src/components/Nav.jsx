@@ -14,7 +14,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 md:h-20 flex items-center justify-between">
         <a href="#top" aria-label={brand.name} className="flex items-center text-forest">
           {/* full lockup on tablet/desktop */}
-          <Logo variant="lockup" className="hidden sm:block h-9 w-auto" />
+          <Logo variant="lockup" className="hidden sm:inline-flex h-9 w-auto" />
           {/* mark only on mobile */}
           <Logo variant="mark" className="sm:hidden h-9 w-9" />
         </a>
@@ -46,7 +46,7 @@ export default function Nav() {
           aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden text-forest p-2 -mr-2"
+          className="md:hidden text-forest p-3 -mr-2 inline-flex items-center justify-center"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>

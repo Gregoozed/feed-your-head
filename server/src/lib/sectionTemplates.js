@@ -24,11 +24,13 @@ export const SECTION_TEMPLATES = {
     stats: [],
   },
   offres: {
-    intro: {
-      heading: { before: 'Trois manières de', italic: 'travailler', after: 'ensemble.' },
-      subtitle: 'Sous-titre à rédiger.',
-    },
-    items: [],
+    kicker: 'En partenariat avec Twelv',
+    heading: { before: '4 offres.', italic: '1 ambition.' },
+    subtitle: 'Capitaliser les savoirs en performance durable.',
+    pitch: 'À compléter.',
+    formulas: [],
+    closer: 'Pas de réussite technologique sans aventure humaine.',
+    cta: { label: 'Échanger sur ce partenariat', href: '#contact' },
   },
   methode: {
     intro: { heading: { before: 'Comment', italic: 'ça se passe.' }, subtitle: 'Sous-titre.' },

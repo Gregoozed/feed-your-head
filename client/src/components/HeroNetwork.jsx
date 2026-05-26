@@ -155,6 +155,7 @@ export default function HeroNetwork() {
               x2={bx2 + dx2}
               y2={by2 + dy2}
               vectorEffect="non-scaling-stroke"
+              pathLength={group ? 1 : undefined}
               className={`network-edge${group ? ' fire' : ''}`}
               style={delay !== null ? { animationDelay: `${delay}s` } : undefined}
             />
@@ -178,6 +179,20 @@ export default function HeroNetwork() {
                 onPointerMove={onPointerMove}
                 onPointerUp={onPointerUp}
                 onPointerCancel={onPointerUp}
+              />
+              <circle
+                cx={cx}
+                cy={cy}
+                r={r}
+                fill="none"
+                stroke="#c47a28"
+                strokeWidth="0.8"
+                vectorEffect="non-scaling-stroke"
+                className="network-halo"
+                style={{
+                  animationDelay: `${delay}s`,
+                  pointerEvents: 'none',
+                }}
               />
               <circle
                 cx={cx}

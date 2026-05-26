@@ -65,31 +65,90 @@ export default function LegalPage() {
         </section>
 
         <section className="space-y-4 mb-12">
-          <h2 className="font-display text-2xl text-forest">Données personnelles</h2>
+          <h2 className="font-display text-2xl text-forest">Données personnelles (RGPD)</h2>
           <p className="text-mute leading-relaxed">
-            Lorsque vous nous contactez par le formulaire ou par e-mail, vos données (nom, adresse
-            e-mail, message) sont utilisées uniquement pour répondre à votre demande. Elles ne sont
-            ni revendues, ni partagées avec des tiers, et sont conservées pendant la durée nécessaire
-            au suivi de l'échange (3 ans maximum après le dernier contact).
-          </p>
-          <p className="text-mute leading-relaxed">
-            Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d'un droit
-            d'accès, de rectification, d'opposition et de suppression sur vos données. Pour
-            l'exercer, écrivez à{' '}
+            <strong className="text-ink">Responsable de traitement :</strong> Virginie Coulange, joignable à{' '}
             <a href={`mailto:${email}`} className="text-forest hover:text-ochre transition-colors">
               {email}
+            </a>
+            .
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Données collectées :</strong> uniquement celles que vous
+            transmettez via le formulaire de contact ou par e-mail (nom, adresse e-mail, contenu du
+            message, et le cas échéant nom de votre organisation).
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Finalité :</strong> répondre à votre demande et assurer le
+            suivi de notre échange. Aucune prospection commerciale automatisée n'est effectuée.
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Base légale :</strong> votre consentement (art. 6.1.a RGPD)
+            et l'intérêt légitime à répondre à une sollicitation entrante (art. 6.1.f RGPD).
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Durée de conservation :</strong> 3 ans à compter du dernier
+            contact, puis archivage ou suppression.
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Destinataires :</strong> les données restent strictement
+            internes. Elles ne sont jamais cédées, louées ou transférées à des tiers, ni transférées
+            hors de l'Union européenne.
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Vos droits :</strong> conformément au RGPD (UE 2016/679) et
+            à la loi « Informatique et Libertés » modifiée, vous disposez d'un droit d'accès, de
+            rectification, d'effacement, de limitation, d'opposition, ainsi que d'un droit à la
+            portabilité de vos données et d'un droit de définir des directives relatives à leur sort
+            après votre décès. Pour exercer ces droits, écrivez à{' '}
+            <a href={`mailto:${email}`} className="text-forest hover:text-ochre transition-colors">
+              {email}
+            </a>
+            . Une réponse vous sera apportée sous un délai d'un mois maximum.
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Réclamation :</strong> si vous estimez, après nous avoir
+            contactés, que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à
+            la CNIL —{' '}
+            <a
+              href="https://www.cnil.fr/fr/plaintes"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-forest hover:text-ochre transition-colors"
+            >
+              www.cnil.fr/fr/plaintes
             </a>
             .
           </p>
         </section>
 
         <section className="space-y-4 mb-12">
-          <h2 className="font-display text-2xl text-forest">Cookies</h2>
+          <h2 className="font-display text-2xl text-forest">Cookies & traceurs</h2>
           <p className="text-mute leading-relaxed">
             Ce site <strong className="text-ink">n'utilise aucun cookie de mesure d'audience, de
-            publicité, ni de traceur tiers</strong>. Seuls des cookies strictement nécessaires au
-            fonctionnement de l'espace d'administration (authentification) peuvent être déposés —
-            ils ne concernent pas les visiteurs du site public.
+            publicité ou de traceur tiers</strong> (pas de Google Analytics, Meta Pixel, etc.). Aucun
+            recueil de consentement n'est donc requis pour la consultation du site public.
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Cookies strictement nécessaires :</strong> un cookie de
+            session est déposé uniquement lors d'une connexion à l'espace d'administration{' '}
+            <code className="text-ink">/admin</code>, afin de maintenir l'authentification. Il est
+            supprimé à la déconnexion.
+          </p>
+          <p className="text-mute leading-relaxed">
+            <strong className="text-ink">Stockage local :</strong> votre navigateur peut conserver,
+            via <code className="text-ink">localStorage</code> / <code className="text-ink">sessionStorage</code>,
+            l'information que vous avez vu l'animation d'accueil et fermé le présent bandeau
+            d'information. Ces données restent sur votre appareil et ne nous sont jamais transmises.
+          </p>
+        </section>
+
+        <section className="space-y-4 mb-12">
+          <h2 className="font-display text-2xl text-forest">Sécurité</h2>
+          <p className="text-mute leading-relaxed">
+            Le site applique les bonnes pratiques de sécurité usuelles : connexion HTTPS, en-têtes
+            de sécurité (Helmet), et restriction d'accès à l'administration par authentification.
+            Les mots de passe sont stockés sous forme hachée.
           </p>
         </section>
 

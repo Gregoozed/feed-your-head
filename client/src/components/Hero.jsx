@@ -11,14 +11,14 @@ export default function Hero({ data }) {
       id="top"
       className="relative grain overflow-hidden pt-32 md:pt-40 pb-24 md:pb-32"
     >
-      <div aria-hidden="true" className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-sage/40 blur-3xl" />
-      <div aria-hidden="true" className="absolute top-1/2 -right-40 w-[32rem] h-[32rem] rounded-full bg-ochre/20 blur-3xl" />
+      <div aria-hidden="true" className="absolute -top-32 -left-32 w-[18rem] h-[18rem] md:w-[28rem] md:h-[28rem] rounded-full bg-sage/40 blur-3xl" />
+      <div aria-hidden="true" className="absolute top-1/2 -right-40 w-[20rem] h-[20rem] md:w-[32rem] md:h-[32rem] rounded-full bg-ochre/20 blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
         <div className="md:col-span-7 z-10">
           <span className="kicker">{baseline}</span>
 
-          <h1 className="mt-6 font-display font-medium text-forest text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight">
+          <h1 className="mt-6 font-display font-medium text-forest text-[2.6rem] sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.02] sm:leading-[0.95] tracking-tight">
             {data.title.before}{' '}
             <em className="not-italic font-display italic text-ochre">
               {data.title.italic}
