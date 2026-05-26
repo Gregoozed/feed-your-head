@@ -9,14 +9,16 @@ import authRouter from './routes/auth.js';
 import contentRouter from './routes/content.js';
 import sectionsRouter from './routes/sections.js';
 import settingsRouter from './routes/settings.js';
-import uploadsRouter from './routes/uploads.js';
+import uploadsRouter, { UPLOADS_DIR } from './routes/uploads.js';
 import usersRouter from './routes/users.js';
 import revisionsRouter from './routes/revisions.js';
 import { getPort, isProd } from './lib/config.js';
+import { bootstrap } from './db/bootstrap.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, '..');
 const clientDist = path.resolve(__dirname, '../../client/dist');
+
+await bootstrap();
 
 const app = express();
 
@@ -54,7 +56,7 @@ app.use('/api/uploads', uploadsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/revisions', revisionsRouter);
 
-app.use('/uploads', express.static(path.join(root, 'uploads'), { maxAge: '7d' }));
+app.use('/uploads', express.static(UPLOADS_DIR, { maxAge: '7d' }));
 
 // In production, serve the built client.
 if (isProd()) {

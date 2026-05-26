@@ -9,7 +9,12 @@ import { db } from '../db/index.js';
 import { requireAuth } from '../auth/middleware.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const UPLOADS_DIR = path.resolve(__dirname, '../../uploads');
+const serverRoot = path.resolve(__dirname, '../..');
+
+// Honour DATA_DIR (Railway volume) for uploads, fall back to ./server/uploads locally.
+export const UPLOADS_DIR = process.env.DATA_DIR
+  ? path.join(path.resolve(process.env.DATA_DIR), 'uploads')
+  : path.join(serverRoot, 'uploads');
 
 await fs.mkdir(UPLOADS_DIR, { recursive: true });
 

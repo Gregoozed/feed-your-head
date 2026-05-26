@@ -2,12 +2,18 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, '../..');
+const serverRoot = path.resolve(__dirname, '../..');
+
+// In prod (Railway), DATA_DIR points to the mounted volume so SQLite + uploads
+// survive across deploys. Locally, defaults to ./server/data so dev keeps working.
+const dataDir = process.env.DATA_DIR
+  ? path.resolve(process.env.DATA_DIR)
+  : path.join(serverRoot, 'data');
 
 const config = {
   client: 'sqlite3',
   connection: {
-    filename: path.join(root, 'data', 'feedyourhead.sqlite'),
+    filename: path.join(dataDir, 'feedyourhead.sqlite'),
   },
   useNullAsDefault: true,
   migrations: {

@@ -1,0 +1,16 @@
+# Railway build pipeline for the feed-your-head monorepo.
+# - install: bootstraps both workspaces (client + server) in one go
+# - build:   produces client/dist (served by Express in prod)
+# - start:   migrate+seed run automatically at boot via server/src/db/bootstrap.js
+
+[phases.setup]
+nixPkgs = ["nodejs_20", "python3"]
+
+[phases.install]
+cmds = ["npm ci --include=dev"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm start"
