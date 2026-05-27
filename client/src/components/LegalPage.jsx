@@ -44,7 +44,8 @@ export default function LegalPage() {
             </a>
           </p>
           <p className="text-mute leading-relaxed text-sm">
-            Numéro SIRET, adresse postale et forme juridique : à compléter par l'éditrice.
+            SIRET : <strong className="text-ink">990 850 125 00016</strong>. Adresse postale et forme
+            juridique : à compléter par l'éditrice.
           </p>
         </section>
 
