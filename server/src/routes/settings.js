@@ -6,7 +6,7 @@ import { recordRevision } from '../lib/revisions.js';
 
 const router = Router();
 
-const ALLOWED_KEYS = new Set(['brand', 'intro', 'contact', 'nav', 'footer']);
+const ALLOWED_KEYS = new Set(['brand', 'intro', 'contact', 'nav', 'footer', 'legal']);
 
 const UpdateSchema = z.object({
   value: z.unknown(),

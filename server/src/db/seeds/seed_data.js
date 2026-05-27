@@ -247,4 +247,12 @@ export const SITE_CONFIG = {
   footer: {
     rights: 'Tous droits réservés.',
   },
+  legal: {
+    editorName: 'Virginie Coulange',
+    editorStatus: 'consultante RH indépendante',
+    siret: '990 850 125 00016',
+    address: '',
+    hostName: 'IONOS SARL',
+    hostAddress: '7 place de la Gare, 57200 Sarreguemines, France',
+  },
 };

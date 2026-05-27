@@ -55,7 +55,9 @@ export default function ContentEditor() {
       const s = c.sections.find((x) => x.id === next.id);
       return s ? structuredClone(s.data) : null;
     }
-    return structuredClone(c.settings[next.id]);
+    // Settings key may not exist yet in an already-seeded DB (e.g. `legal`
+    // added after launch). Default to {} so its editor still opens.
+    return structuredClone(c.settings[next.id] ?? {});
   };
 
   const switchTo = (next) => {

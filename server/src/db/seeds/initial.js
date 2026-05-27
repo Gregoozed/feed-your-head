@@ -19,6 +19,7 @@ export async function seed(knex) {
     contact: SITE_CONFIG.contact, // email, linkedin, calendly, formspree
     nav: SITE_CONFIG.nav,
     footer: SITE_CONFIG.footer,
+    legal: SITE_CONFIG.legal,
   };
   await knex('settings').insert(
     Object.entries(settings).map(([key, value]) => ({

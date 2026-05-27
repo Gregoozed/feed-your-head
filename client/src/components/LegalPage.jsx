@@ -7,6 +7,17 @@ export default function LegalPage() {
   const brand = settings?.brand?.name ?? 'Feed Your Head';
   const email = settings?.contact?.email ?? 'contact@feedyourhead.fr';
 
+  // Factual identity fields are editable from the back office (Réglages →
+  // Mentions légales). Defaults below keep the page identical when the
+  // `legal` settings key doesn't exist yet (e.g. an already-seeded prod DB).
+  const legal = settings?.legal ?? {};
+  const editorName = legal.editorName || 'Virginie Coulange';
+  const editorStatus = legal.editorStatus || 'consultante RH indépendante';
+  const siret = legal.siret || '990 850 125 00016';
+  const address = legal.address || '';
+  const hostName = legal.hostName || 'IONOS SARL';
+  const hostAddress = legal.hostAddress || '7 place de la Gare, 57200 Sarreguemines, France';
+
   return (
     <div className="min-h-screen bg-cream text-ink">
       <header className="border-b border-cream-dark">
@@ -34,8 +45,8 @@ export default function LegalPage() {
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Éditeur du site</h2>
           <p className="text-mute leading-relaxed text-justify">
-            Le présent site <strong className="text-ink">{brand}</strong> est édité par
-            Virginie Coulange, consultante RH indépendante.
+            Le présent site <strong className="text-ink">{brand}</strong> est édité par{' '}
+            {editorName}{editorStatus ? `, ${editorStatus}` : ''}.
           </p>
           <p className="text-mute leading-relaxed text-justify">
             Contact :{' '}
@@ -44,15 +55,16 @@ export default function LegalPage() {
             </a>
           </p>
           <p className="text-mute leading-relaxed text-sm">
-            SIRET : <strong className="text-ink">990 850 125 00016</strong>. Adresse postale et forme
-            juridique : à compléter par l'éditrice.
+            SIRET : <strong className="text-ink">{siret}</strong>.{' '}
+            {address ? `Adresse : ${address}.` : "Adresse postale : à compléter par l'éditrice."}
           </p>
         </section>
 
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Hébergement</h2>
           <p className="text-mute leading-relaxed text-justify">
-            Le site est hébergé par <strong className="text-ink">IONOS SARL</strong>, 7 place de la Gare, 57200 Sarreguemines, France.
+            Le site est hébergé par <strong className="text-ink">{hostName}</strong>
+            {hostAddress ? `, ${hostAddress}` : ''}.
           </p>
         </section>
 
@@ -68,7 +80,7 @@ export default function LegalPage() {
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Données personnelles (RGPD)</h2>
           <p className="text-mute leading-relaxed text-justify">
-            <strong className="text-ink">Responsable de traitement :</strong> Virginie Coulange, joignable à{' '}
+            <strong className="text-ink">Responsable de traitement :</strong> {editorName}, joignable à{' '}
             <a href={`mailto:${email}`} className="text-forest hover:text-ochre transition-colors">
               {email}
             </a>

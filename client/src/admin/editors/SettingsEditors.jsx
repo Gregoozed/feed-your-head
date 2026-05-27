@@ -89,12 +89,35 @@ function FooterEditor({ value, onChange }) {
   );
 }
 
+// ──────────────────────────────────────────────────────────────────
+//  MENTIONS LÉGALES (settings.legal) — champs factuels d'identité
+//  Le texte juridique (RGPD, cookies, mesure d'audience) reste dans le code.
+// ──────────────────────────────────────────────────────────────────
+function LegalEditor({ value, onChange }) {
+  const v = value ?? {};
+  return (
+    <>
+      <Section title="Éditeur du site">
+        <TextField label="Nom de l'éditrice" value={v.editorName} onChange={(x) => onChange(set(v, 'editorName', x))} placeholder="Virginie Coulange" />
+        <TextField label="Statut / forme juridique" value={v.editorStatus} onChange={(x) => onChange(set(v, 'editorStatus', x))} placeholder="consultante RH indépendante" />
+        <TextField label="SIRET" value={v.siret} onChange={(x) => onChange(set(v, 'siret', x))} placeholder="990 850 125 00016" />
+        <TextField label="Adresse postale (optionnel)" value={v.address} onChange={(x) => onChange(set(v, 'address', x))} placeholder="laisser vide pour « à compléter »" />
+      </Section>
+      <Section title="Hébergement">
+        <TextField label="Nom de l'hébergeur" value={v.hostName} onChange={(x) => onChange(set(v, 'hostName', x))} placeholder="IONOS SARL" />
+        <TextField label="Adresse de l'hébergeur" value={v.hostAddress} onChange={(x) => onChange(set(v, 'hostAddress', x))} placeholder="7 place de la Gare, 57200 Sarreguemines, France" />
+      </Section>
+    </>
+  );
+}
+
 export const SETTINGS_EDITORS = {
   brand: BrandEditor,
   intro: IntroEditor,
   contact: ContactInfoEditor,
   nav: NavEditor,
   footer: FooterEditor,
+  legal: LegalEditor,
 };
 
 export const SETTINGS_LABELS = {
@@ -103,4 +126,5 @@ export const SETTINGS_LABELS = {
   contact: 'Coordonnées',
   nav: 'Menu de navigation',
   footer: 'Pied de page',
+  legal: 'Mentions légales',
 };
