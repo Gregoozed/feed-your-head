@@ -34,6 +34,11 @@ function getTransporter() {
     port,
     secure: port === 465, // 465 = implicit TLS, 587 = STARTTLS
     auth: { user: SMTP_USER, pass: SMTP_PASS },
+    // Fail fast: without these, a stuck SMTP connection would hang the
+    // request (and the visitor's form) indefinitely.
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
   return cached;
 }
@@ -69,7 +74,9 @@ router.post('/', limiter, async (req, res) => {
     });
     res.json({ ok: true });
   } catch (err) {
-    console.error('[contact] send failed:', err.message);
+    // err.code helps pinpoint the cause: ETIMEDOUT/ECONNECTION = réseau/host,
+    // EAUTH (535) = identifiants, EENVELOPE = adresse From/To refusée.
+    console.error('[contact] send failed:', err.code || '', err.message);
     res.status(502).json({ error: 'send_failed' });
   }
 });
