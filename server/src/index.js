@@ -12,6 +12,7 @@ import settingsRouter from './routes/settings.js';
 import uploadsRouter, { UPLOADS_DIR } from './routes/uploads.js';
 import usersRouter from './routes/users.js';
 import revisionsRouter from './routes/revisions.js';
+import analyticsRouter from './routes/analytics.js';
 import { getPort, isProd } from './lib/config.js';
 import { bootstrap } from './db/bootstrap.js';
 
@@ -55,6 +56,7 @@ app.use('/api/settings', settingsRouter);
 app.use('/api/uploads', uploadsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/revisions', revisionsRouter);
+app.use('/api/analytics', analyticsRouter);
 
 app.use('/uploads', express.static(UPLOADS_DIR, { maxAge: '7d' }));
 

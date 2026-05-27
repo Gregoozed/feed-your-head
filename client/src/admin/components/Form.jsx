@@ -65,6 +65,27 @@ export function TextAreaField({ label, value, onChange, rows = 3, placeholder })
   );
 }
 
+export function SelectField({ label, value, onChange, options = [] }) {
+  const id = useFieldId();
+  return (
+    <div>
+      {label && <Label htmlFor={id}>{label}</Label>}
+      <select
+        id={id}
+        value={value ?? ''}
+        onChange={(e) => onChange(e.target.value)}
+        className={inputClass}
+      >
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 export function CheckboxField({ label, value, onChange, description }) {
   const id = useFieldId();
   return (

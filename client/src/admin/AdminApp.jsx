@@ -6,6 +6,7 @@ import ContentEditor from './pages/ContentEditor.jsx';
 import Media from './pages/Media.jsx';
 import Users from './pages/Users.jsx';
 import Revisions from './pages/Revisions.jsx';
+import Analytics from './pages/Analytics.jsx';
 
 export default function AdminApp() {
   return (
@@ -49,6 +50,14 @@ export default function AdminApp() {
           element={
             <ProtectedRoute>
               <Revisions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <ProtectedRoute>
+              <Analytics />
             </ProtectedRoute>
           }
         />

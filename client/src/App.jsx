@@ -1,14 +1,17 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ContentProvider } from './contexts/ContentContext.jsx';
+import { usePageTracking } from './hooks/usePageTracking.js';
 import SiteRenderer from './components/SiteRenderer.jsx';
 import LegalPage from './components/LegalPage.jsx';
+import RessourcesPage from './pages/RessourcesPage.jsx';
 
 const AdminApp = lazy(() => import('./admin/AdminApp.jsx'));
 
 export default function App() {
   return (
     <BrowserRouter>
+      <PageTracker />
       <Routes>
         <Route
           path="/admin/*"
@@ -27,6 +30,14 @@ export default function App() {
           }
         />
         <Route
+          path="/ressources"
+          element={
+            <ContentProvider>
+              <RessourcesPage />
+            </ContentProvider>
+          }
+        />
+        <Route
           path="*"
           element={
             <ContentProvider>
@@ -37,6 +48,11 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   );
+}
+
+function PageTracker() {
+  usePageTracking();
+  return null;
 }
 
 function AdminFallback() {

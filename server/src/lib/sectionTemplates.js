@@ -7,6 +7,7 @@ export const SECTION_TYPES = [
   'methode',
   'references',
   'temoignages',
+  'ressources',
   'apropos',
   'contact',
 ];
@@ -42,6 +43,14 @@ export const SECTION_TEMPLATES = {
   },
   temoignages: {
     intro: { heading: { before: 'Quelques', italic: 'retours.' }, subtitle: 'Sous-titre.' },
+    items: [],
+  },
+  ressources: {
+    intro: {
+      kicker: 'Ressources',
+      heading: 'À lire, voir & écouter.',
+      subtitle: 'Articles, retours d’expérience et contenus vidéo sur les sujets qui traversent mon métier.',
+    },
     items: [],
   },
   apropos: {

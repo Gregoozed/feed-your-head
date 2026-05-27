@@ -55,6 +55,10 @@ export async function seed(knex) {
       data: { intro: SITE_CONFIG.temoignagesIntro, items: SITE_CONFIG.temoignages },
     },
     {
+      type: 'ressources',
+      data: { intro: SITE_CONFIG.ressourcesIntro, items: SITE_CONFIG.ressources },
+    },
+    {
       type: 'apropos',
       data: SITE_CONFIG.apropos,
     },

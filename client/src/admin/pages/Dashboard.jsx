@@ -52,6 +52,12 @@ export default function Dashboard() {
             description="Historique des modifications, restauration."
             note="Disponible"
           />
+          <Card
+            to="/admin/analytics"
+            title="Analytiques"
+            description="Statistiques de visites : pages vues, visiteurs, pays, appareils. Sans cookie."
+            note="Disponible"
+          />
         </div>
 
         <div className="mt-10 text-xs text-mute">

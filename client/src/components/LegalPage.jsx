@@ -144,6 +144,30 @@ export default function LegalPage() {
         </section>
 
         <section className="space-y-4 mb-12">
+          <h2 className="font-display text-2xl text-forest">Mesure d'audience</h2>
+          <p className="text-mute leading-relaxed text-justify">
+            Afin de comprendre la fréquentation du site, une mesure d'audience{' '}
+            <strong className="text-ink">interne, sans cookie et sans service tiers</strong> est
+            réalisée. À chaque page consultée, sont enregistrés de manière agrégée : la page visitée,
+            la source de provenance (site référent), le type d'appareil (mobile, tablette, ordinateur)
+            et une localisation approximative (pays et région).
+          </p>
+          <p className="text-mute leading-relaxed text-justify">
+            <strong className="text-ink">Aucune adresse IP n'est conservée.</strong> La localisation
+            est déduite de l'adresse IP au moment de la visite via une base de données hors ligne, puis
+            l'adresse IP est immédiatement écartée. Le décompte des visiteurs uniques repose sur un
+            identifiant anonyme et non réversible, renouvelé chaque jour, qui ne permet ni de suivre un
+            visiteur d'un jour à l'autre, ni de l'identifier, ni de le suivre sur d'autres sites.
+          </p>
+          <p className="text-mute leading-relaxed text-justify">
+            Ce dispositif respecte les conditions de l'exemption de consentement prévue par la CNIL pour
+            la mesure d'audience (finalité strictement limitée à l'établissement de statistiques
+            anonymes, pas de recoupement avec d'autres traitements, pas de suivi inter-sites). Aucun
+            bandeau de consentement n'est donc requis.
+          </p>
+        </section>
+
+        <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Sécurité</h2>
           <p className="text-mute leading-relaxed text-justify">
             Le site applique les bonnes pratiques de sécurité usuelles : connexion HTTPS, en-têtes

@@ -24,6 +24,7 @@ export const SITE_CONFIG = {
     { label: 'Méthode', href: '#methode' },
     { label: 'À propos', href: '#apropos' },
     { label: 'Témoignages', href: '#temoignages' },
+    { label: 'Ressources', href: '/ressources' },
   ],
   hero: {
     title: {
@@ -191,6 +192,32 @@ export const SITE_CONFIG = {
       name: 'À compléter',
       role: 'Responsable RH',
       company: 'Entreprise à venir',
+    },
+  ],
+  ressourcesIntro: {
+    kicker: 'Ressources',
+    heading: 'À lire, voir & écouter.',
+    subtitle:
+      "Articles, retours d'expérience et contenus vidéo sur les sujets qui traversent mon métier.",
+  },
+  ressources: [
+    {
+      title: "Exemple — un article de fond sur la fonction RH",
+      type: 'article',
+      url: 'https://example.com',
+      thumbnailUrl: '',
+      description:
+        "À compléter — décrivez en une ou deux phrases ce que le lecteur trouvera dans cette ressource.",
+      source: 'Source à compléter',
+    },
+    {
+      title: "Exemple — un retour d'expérience de mission",
+      type: 'retex',
+      url: 'https://example.com',
+      thumbnailUrl: '',
+      description:
+        "À compléter — un retour d'expérience concret, anonymisé si besoin.",
+      source: 'Feed Your Head',
     },
   ],
   apropos: {

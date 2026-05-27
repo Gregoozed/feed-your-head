@@ -81,4 +81,6 @@ export const api = {
   },
   getRevision: (id) => request(`/revisions/${id}`),
   restoreRevision: (id) => request(`/revisions/${id}/restore`, { method: 'POST' }),
+
+  analyticsStats: (range = '30d') => request(`/analytics/stats?range=${encodeURIComponent(range)}`),
 };

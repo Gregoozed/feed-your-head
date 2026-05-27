@@ -1,4 +1,4 @@
-import { TextField, TextAreaField, ListField, Section } from '../components/Form.jsx';
+import { TextField, TextAreaField, SelectField, ListField, Section } from '../components/Form.jsx';
 import { ImagePicker } from '../components/MediaPicker.jsx';
 
 // Small helper to keep deep-set concise
@@ -240,6 +240,49 @@ function TemoignagesEditor({ data, onChange }) {
 }
 
 // ──────────────────────────────────────────────────────────────────
+//  RESSOURCES (page dédiée /ressources — articles, vidéos, retours d'expérience)
+// ──────────────────────────────────────────────────────────────────
+const RESSOURCE_TYPES = [
+  { value: 'article', label: 'Article' },
+  { value: 'video', label: 'Vidéo' },
+  { value: 'retex', label: "Retour d'expérience" },
+  { value: 'autre', label: 'Autre' },
+];
+
+function RessourcesEditor({ data, onChange }) {
+  const intro = data.intro ?? { kicker: '', heading: '', subtitle: '' };
+  return (
+    <>
+      <Section title="Introduction">
+        <TextField label="Kicker (uppercase ocre)" value={intro.kicker} onChange={(v) => onChange(setIn(data, ['intro', 'kicker'], v))} />
+        <TextField label="Titre" value={intro.heading} onChange={(v) => onChange(setIn(data, ['intro', 'heading'], v))} />
+        <TextAreaField label="Sous-titre" value={intro.subtitle} onChange={(v) => onChange(setIn(data, ['intro', 'subtitle'], v))} rows={2} />
+      </Section>
+      <Section title="Ressources">
+        <ListField
+          items={data.items ?? []}
+          onChange={(items) => onChange(set(data, 'items', items))}
+          newItem={() => ({ title: '', type: 'article', url: '', thumbnailUrl: '', description: '', source: '' })}
+          addLabel="Ajouter une ressource"
+          renderItem={(item, setItem) => (
+            <div className="space-y-3">
+              <TextField label="Titre" value={item.title} onChange={(v) => setItem({ ...item, title: v })} />
+              <div className="grid grid-cols-2 gap-3">
+                <SelectField label="Type" value={item.type} onChange={(v) => setItem({ ...item, type: v })} options={RESSOURCE_TYPES} />
+                <TextField label="Source (optionnel)" value={item.source} onChange={(v) => setItem({ ...item, source: v })} />
+              </div>
+              <TextField label="Lien (URL, ouvert dans un nouvel onglet)" value={item.url} onChange={(v) => setItem({ ...item, url: v })} />
+              <TextAreaField label="Description" value={item.description} onChange={(v) => setItem({ ...item, description: v })} rows={2} />
+              <ImagePicker label="Vignette (optionnelle)" value={item.thumbnailUrl} onChange={(v) => setItem({ ...item, thumbnailUrl: v })} />
+            </div>
+          )}
+        />
+      </Section>
+    </>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────
 //  À PROPOS
 // ──────────────────────────────────────────────────────────────────
 function AProposEditor({ data, onChange }) {
@@ -305,6 +348,7 @@ export const SECTION_EDITORS = {
   methode: MethodeEditor,
   references: ReferencesEditor,
   temoignages: TemoignagesEditor,
+  ressources: RessourcesEditor,
   apropos: AProposEditor,
   contact: ContactEditor,
 };
@@ -316,6 +360,7 @@ export const SECTION_LABELS = {
   methode: 'Méthode',
   references: 'Références',
   temoignages: 'Témoignages',
+  ressources: 'Ressources',
   apropos: 'À propos',
   contact: 'Contact',
 };

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../contexts/ContentContext.jsx';
 import Logo from './Logo.jsx';
 
@@ -12,6 +12,7 @@ function LinkedinGlyph(props) {
 
 export default function Footer() {
   const settings = useSettings();
+  const onHome = useLocation().pathname === '/';
   if (!settings) return null;
   const { brand, contact, footer } = settings;
   const year = new Date().getFullYear();
@@ -19,9 +20,15 @@ export default function Footer() {
   return (
     <footer className="bg-cream border-t border-cream-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <a href="#top" aria-label={brand.name} className="text-forest">
-          <Logo variant="lockup" className="h-8 w-auto" />
-        </a>
+        {onHome ? (
+          <a href="#top" aria-label={brand.name} className="text-forest">
+            <Logo variant="lockup" className="h-8 w-auto" />
+          </a>
+        ) : (
+          <Link to="/" aria-label={brand.name} className="text-forest">
+            <Logo variant="lockup" className="h-8 w-auto" />
+          </Link>
+        )}
 
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-sm text-mute">
           {contact.linkedin && (
