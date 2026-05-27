@@ -48,8 +48,15 @@ Dans le service → onglet **Variables** :
 | `ADMIN_PASSWORD` | mot de passe fort (seed initial — change-le ensuite via `/admin`) |
 | `ADMIN_NAME` | nom complet |
 | `PUBLIC_ORIGIN` | `https://feedyourhead.fr` |
+| `SMTP_HOST` | `smtp.ionos.fr` |
+| `SMTP_PORT` | `587` (STARTTLS) ou `465` (SSL) |
+| `SMTP_USER` | `virginie@feedyourhead.fr` (boîte IONOS) |
+| `SMTP_PASS` | mot de passe de la boîte mail |
+| `CONTACT_TO` | *(optionnel)* destinataire des messages — défaut = `SMTP_USER` |
 
 **Ne pas définir `PORT`** — Railway l'injecte automatiquement, `getPort()` le récupère.
+
+> Le formulaire de contact envoie via SMTP (`server/src/routes/contact.js`). Sans les variables `SMTP_*`, l'endpoint `/api/contact` répond `email_not_configured` et le formulaire affiche le message d'erreur.
 
 Cliquer **Deploy** → le service redémarre, le bootstrap :
 1. crée `/data/feedyourhead.sqlite`

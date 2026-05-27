@@ -10,7 +10,7 @@ function LinkedinGlyph(props) {
   );
 }
 
-const initialFields = { name: '', email: '', company: '', message: '' };
+const initialFields = { name: '', email: '', company: '', message: '', website: '' };
 
 export default function Contact({ data }) {
   const settings = useSettings();
@@ -30,7 +30,7 @@ export default function Contact({ data }) {
     }
     setStatus('sending');
     try {
-      const res = await fetch(contactInfo.formspreeEndpoint, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(fields),
@@ -99,6 +99,12 @@ export default function Contact({ data }) {
             <div className="mt-5">
               <label htmlFor="message" className="block text-xs uppercase tracking-widest text-mute font-medium">{labels.message}</label>
               <textarea id="message" rows={5} value={fields.message} onChange={update('message')} required className="mt-2 w-full rounded-xl border border-cream-dark bg-cream/50 px-4 py-3 text-ink placeholder:text-mute/60 focus:bg-white focus:border-ochre/60 transition-colors resize-none" />
+            </div>
+
+            {/* honeypot anti-spam : champ caché, jamais rempli par un humain */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website">Ne pas remplir</label>
+              <input id="website" type="text" tabIndex={-1} autoComplete="off" value={fields.website} onChange={update('website')} />
             </div>
 
             <button type="button" onClick={submit} disabled={status === 'sending'} className="group mt-7 inline-flex items-center gap-3 rounded-full bg-ochre text-white px-7 py-4 text-sm md:text-base font-medium hover:bg-ochre/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all">

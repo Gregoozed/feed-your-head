@@ -43,7 +43,6 @@ function ContactInfoEditor({ value, onChange }) {
       <TextField label="Email de contact" type="email" value={value.email} onChange={(v) => onChange(set(value, 'email', v))} />
       <TextField label="URL LinkedIn" value={value.linkedin} onChange={(v) => onChange(set(value, 'linkedin', v))} />
       <TextField label="URL Calendly" value={value.calendlyUrl} onChange={(v) => onChange(set(value, 'calendlyUrl', v))} placeholder="https://calendly.com/…" />
-      <TextField label="Endpoint Formspree" value={value.formspreeEndpoint} onChange={(v) => onChange(set(value, 'formspreeEndpoint', v))} placeholder="https://formspree.io/f/XXXX" />
     </Section>
   );
 }
