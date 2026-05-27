@@ -73,15 +73,6 @@ export default function Offres({ data }) {
       id="offres"
       className="relative bg-cream text-forest py-24 md:py-32 overflow-hidden"
     >
-      <div
-        aria-hidden="true"
-        className="absolute -top-32 -right-32 w-[260px] h-[260px] md:w-[480px] md:h-[480px] rounded-full bg-ochre/15 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-24 -left-24 w-[240px] h-[240px] md:w-[420px] md:h-[420px] rounded-full bg-sage/30 blur-3xl pointer-events-none"
-      />
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         {/* header */}
         <div className="max-w-3xl mx-auto text-center">
