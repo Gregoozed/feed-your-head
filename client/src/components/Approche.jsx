@@ -18,7 +18,7 @@ export default function Approche({ data }) {
         </div>
 
         <div className="md:col-span-8 md:pt-4">
-          <div className="space-y-6 text-cream/85 text-lg leading-relaxed max-w-2xl">
+          <div className="space-y-6 text-cream/85 text-lg leading-relaxed max-w-2xl text-justify">
             {data.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}

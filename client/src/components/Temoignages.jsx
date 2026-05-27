@@ -14,7 +14,7 @@ export default function Temoignages({ data }) {
               {intro.heading.italic}
             </em>
           </h2>
-          <p className="mt-6 text-mute text-lg leading-relaxed">{intro.subtitle}</p>
+          <p className="mt-6 text-mute text-lg leading-relaxed text-justify">{intro.subtitle}</p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">

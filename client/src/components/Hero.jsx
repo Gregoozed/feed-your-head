@@ -11,9 +11,6 @@ export default function Hero({ data }) {
       id="top"
       className="relative grain overflow-hidden pt-32 md:pt-40 pb-24 md:pb-32"
     >
-      <div aria-hidden="true" className="absolute -top-32 -left-32 w-[18rem] h-[18rem] md:w-[28rem] md:h-[28rem] rounded-full bg-sage/40 blur-3xl" />
-      <div aria-hidden="true" className="absolute top-1/2 -right-40 w-[20rem] h-[20rem] md:w-[32rem] md:h-[32rem] rounded-full bg-ochre/20 blur-3xl" />
-
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
         <div className="md:col-span-7 z-10">
           <span className="kicker">{baseline}</span>
@@ -26,7 +23,7 @@ export default function Hero({ data }) {
             {data.title.after}
           </h1>
 
-          <p className="mt-8 text-lg md:text-xl text-mute max-w-xl leading-relaxed">
+          <p className="mt-8 text-lg md:text-xl text-mute max-w-xl leading-relaxed text-justify">
             {data.subtitle}
           </p>
 

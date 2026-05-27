@@ -52,7 +52,7 @@ export default function Contact({ data }) {
             {data.heading.before}{' '}
             <em className="not-italic font-display italic text-ochre">{data.heading.italic}</em>
           </h2>
-          <p className="mt-6 text-mute text-lg leading-relaxed">{data.subtitle}</p>
+          <p className="mt-6 text-mute text-lg leading-relaxed text-justify">{data.subtitle}</p>
 
           {contactInfo.calendlyUrl && (
             <a

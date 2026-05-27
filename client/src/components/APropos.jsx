@@ -27,7 +27,7 @@ export default function APropos({ data }) {
               {data.heading.italic}
             </em>
           </h2>
-          <div className="mt-8 space-y-5 text-cream/85 text-lg leading-relaxed max-w-2xl">
+          <div className="mt-8 space-y-5 text-cream/85 text-lg leading-relaxed max-w-2xl text-justify">
             {data.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}

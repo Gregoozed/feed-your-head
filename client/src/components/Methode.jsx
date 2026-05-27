@@ -12,7 +12,7 @@ export default function Methode({ data }) {
               {intro.heading.italic}
             </em>
           </h2>
-          <p className="mt-6 text-mute text-lg leading-relaxed">{intro.subtitle}</p>
+          <p className="mt-6 text-mute text-lg leading-relaxed text-justify">{intro.subtitle}</p>
         </div>
 
         <div className="relative mt-16 md:mt-20">
@@ -26,7 +26,7 @@ export default function Methode({ data }) {
                   </span>
                 </div>
                 <h3 className="mt-6 font-display text-xl md:text-2xl text-forest">{step.title}</h3>
-                <p className="mt-3 text-sm md:text-base text-mute leading-relaxed">{step.description}</p>
+                <p className="mt-3 text-sm md:text-base text-mute leading-relaxed text-justify">{step.description}</p>
               </li>
             ))}
           </ol>

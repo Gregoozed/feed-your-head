@@ -33,11 +33,11 @@ export default function LegalPage() {
 
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Éditeur du site</h2>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             Le présent site <strong className="text-ink">{brand}</strong> est édité par
             Virginie Coulange, consultante RH indépendante.
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             Contact :{' '}
             <a href={`mailto:${email}`} className="text-forest hover:text-ochre transition-colors">
               {email}
@@ -50,14 +50,14 @@ export default function LegalPage() {
 
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Hébergement</h2>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             Le site est hébergé par <strong className="text-ink">IONOS SARL</strong>, 7 place de la Gare, 57200 Sarreguemines, France.
           </p>
         </section>
 
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Propriété intellectuelle</h2>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             L'ensemble des contenus (textes, images, logos, identité visuelle) présents sur ce site
             sont la propriété de leur auteur respectif. Toute reproduction, même partielle, est
             interdite sans autorisation préalable.
@@ -66,36 +66,36 @@ export default function LegalPage() {
 
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Données personnelles (RGPD)</h2>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Responsable de traitement :</strong> Virginie Coulange, joignable à{' '}
             <a href={`mailto:${email}`} className="text-forest hover:text-ochre transition-colors">
               {email}
             </a>
             .
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Données collectées :</strong> uniquement celles que vous
             transmettez via le formulaire de contact ou par e-mail (nom, adresse e-mail, contenu du
             message, et le cas échéant nom de votre organisation).
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Finalité :</strong> répondre à votre demande et assurer le
             suivi de notre échange. Aucune prospection commerciale automatisée n'est effectuée.
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Base légale :</strong> votre consentement (art. 6.1.a RGPD)
             et l'intérêt légitime à répondre à une sollicitation entrante (art. 6.1.f RGPD).
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Durée de conservation :</strong> 3 ans à compter du dernier
             contact, puis archivage ou suppression.
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Destinataires :</strong> les données restent strictement
             internes. Elles ne sont jamais cédées, louées ou transférées à des tiers, ni transférées
             hors de l'Union européenne.
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Vos droits :</strong> conformément au RGPD (UE 2016/679) et
             à la loi « Informatique et Libertés » modifiée, vous disposez d'un droit d'accès, de
             rectification, d'effacement, de limitation, d'opposition, ainsi que d'un droit à la
@@ -106,7 +106,7 @@ export default function LegalPage() {
             </a>
             . Une réponse vous sera apportée sous un délai d'un mois maximum.
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Réclamation :</strong> si vous estimez, après nous avoir
             contactés, que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à
             la CNIL —{' '}
@@ -124,18 +124,18 @@ export default function LegalPage() {
 
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Cookies & traceurs</h2>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             Ce site <strong className="text-ink">n'utilise aucun cookie de mesure d'audience, de
             publicité ou de traceur tiers</strong> (pas de Google Analytics, Meta Pixel, etc.). Aucun
             recueil de consentement n'est donc requis pour la consultation du site public.
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Cookies strictement nécessaires :</strong> un cookie de
             session est déposé uniquement lors d'une connexion à l'espace d'administration{' '}
             <code className="text-ink">/admin</code>, afin de maintenir l'authentification. Il est
             supprimé à la déconnexion.
           </p>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Stockage local :</strong> votre navigateur peut conserver,
             via <code className="text-ink">localStorage</code> / <code className="text-ink">sessionStorage</code>,
             l'information que vous avez vu l'animation d'accueil et fermé le présent bandeau
@@ -145,7 +145,7 @@ export default function LegalPage() {
 
         <section className="space-y-4 mb-12">
           <h2 className="font-display text-2xl text-forest">Sécurité</h2>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             Le site applique les bonnes pratiques de sécurité usuelles : connexion HTTPS, en-têtes
             de sécurité (Helmet), et restriction d'accès à l'administration par authentification.
             Les mots de passe sont stockés sous forme hachée.
@@ -154,7 +154,7 @@ export default function LegalPage() {
 
         <section className="space-y-4">
           <h2 className="font-display text-2xl text-forest">Liens externes</h2>
-          <p className="text-mute leading-relaxed">
+          <p className="text-mute leading-relaxed text-justify">
             Ce site peut contenir des liens vers des sites tiers (notamment LinkedIn). Nous ne
             sommes pas responsables du contenu ou de la politique de confidentialité de ces sites.
           </p>

@@ -30,7 +30,7 @@ export default function CookieBanner() {
       className="fixed bottom-4 inset-x-4 md:bottom-6 md:left-6 md:right-auto md:max-w-md z-[90]"
     >
       <div className="bg-forest text-cream rounded-2xl shadow-2xl px-5 py-4 md:px-6 md:py-5 flex items-start gap-4">
-        <div className="flex-1 text-sm leading-relaxed">
+        <div className="flex-1 text-sm leading-relaxed text-justify">
           <p>
             Ce site n'utilise <strong>aucun cookie de traçage</strong>, ni outil d'analyse tiers.
             Seuls des cookies strictement nécessaires (admin) peuvent être déposés.{' '}

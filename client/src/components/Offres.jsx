@@ -107,12 +107,13 @@ export default function Offres({ data }) {
         {/* tabs */}
         {formulas.length > 0 && (
           <>
+            <div className="mt-14 flex justify-center">
             <div
               ref={tablistRef}
               role="tablist"
               aria-label="Formules du partenariat"
               onKeyDown={onKeyDown}
-              className="relative mt-14 flex gap-1 overflow-x-auto md:overflow-visible scrollbar-none border-b border-forest/15"
+              className="relative inline-flex gap-1 max-w-full overflow-x-auto md:overflow-visible scrollbar-none border-b border-forest/10"
             >
               {formulas.map((f, i) => {
                 const isActive = i === active;
@@ -155,6 +156,7 @@ export default function Offres({ data }) {
                 style={{ left: indicator.left, width: indicator.width }}
               />
             </div>
+            </div>
 
             {/* panel */}
             {current && (
@@ -163,7 +165,7 @@ export default function Offres({ data }) {
                 role="tabpanel"
                 id={`offres-panel-${active}`}
                 aria-labelledby={`offres-tab-${active}`}
-                className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 animate-[fade-in-up_350ms_cubic-bezier(0.16,1,0.3,1)]"
+                className="mt-12 md:mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 animate-[fade-in-up_350ms_cubic-bezier(0.16,1,0.3,1)]"
               >
                 <div className="md:col-span-5">
                   <p className="text-xs uppercase tracking-[0.3em] text-ochre">
@@ -172,7 +174,7 @@ export default function Offres({ data }) {
                   <h3 className="mt-4 font-display italic text-5xl md:text-6xl text-ochre leading-none">
                     {current.verb}
                   </h3>
-                  <p className="mt-3 text-forest/85 text-lg leading-relaxed">{current.verbDesc}</p>
+                  <p className="mt-3 text-forest/85 text-lg leading-relaxed text-justify">{current.verbDesc}</p>
                   <p className="mt-6 font-display italic text-mute text-lg">
                     {current.tagline}
                   </p>
@@ -196,7 +198,7 @@ export default function Offres({ data }) {
                           className="mt-1 shrink-0 text-ochre transition-transform group-hover:translate-x-0.5"
                           aria-hidden="true"
                         />
-                        <span className="leading-relaxed">{b}</span>
+                        <span className="leading-relaxed text-justify">{b}</span>
                       </li>
                     ))}
                   </ul>
