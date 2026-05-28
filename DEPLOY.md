@@ -48,15 +48,15 @@ Dans le service → onglet **Variables** :
 | `ADMIN_PASSWORD` | mot de passe fort (seed initial — change-le ensuite via `/admin`) |
 | `ADMIN_NAME` | nom complet |
 | `PUBLIC_ORIGIN` | `https://feedyourhead.fr` |
-| `SMTP_HOST` | `smtp.ionos.fr` |
-| `SMTP_PORT` | `587` (STARTTLS) ou `465` (SSL) |
-| `SMTP_USER` | `virginie@feedyourhead.fr` (boîte IONOS) |
-| `SMTP_PASS` | mot de passe de la boîte mail |
-| `CONTACT_TO` | *(optionnel)* destinataire des messages — défaut = `SMTP_USER` |
+| `BREVO_API_KEY` | clé API Brevo (Brevo → *SMTP & API* → *API keys*) |
+| `CONTACT_FROM` | `virginie@feedyourhead.fr` (expéditeur, à authentifier dans Brevo) |
+| `CONTACT_TO` | *(optionnel)* destinataire — défaut = `CONTACT_FROM` |
 
 **Ne pas définir `PORT`** — Railway l'injecte automatiquement, `getPort()` le récupère.
 
-> Le formulaire de contact envoie via SMTP (`server/src/routes/contact.js`). Sans les variables `SMTP_*`, l'endpoint `/api/contact` répond `email_not_configured` et le formulaire affiche le message d'erreur.
+> Le formulaire de contact envoie via l'**API Brevo** en HTTPS (`server/src/routes/contact.js`) — Railway bloque le SMTP sortant, donc pas de SMTP IONOS direct. Sans `BREVO_API_KEY`, l'endpoint `/api/contact` répond `email_not_configured`.
+>
+> **Mise en place Brevo (une fois) :** créer un compte gratuit sur brevo.com → authentifier l'expéditeur : soit vérifier l'adresse `virginie@feedyourhead.fr` (un clic sur le lien reçu dans sa boîte — rapide), soit authentifier le domaine `feedyourhead.fr` en ajoutant les enregistrements DKIM fournis par Brevo (meilleure délivrabilité). Puis générer une clé API et la mettre dans `BREVO_API_KEY`.
 
 Cliquer **Deploy** → le service redémarre, le bootstrap :
 1. crée `/data/feedyourhead.sqlite`

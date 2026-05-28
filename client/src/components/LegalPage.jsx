@@ -104,9 +104,11 @@ export default function LegalPage() {
             contact, puis archivage ou suppression.
           </p>
           <p className="text-mute leading-relaxed text-justify">
-            <strong className="text-ink">Destinataires :</strong> les données restent strictement
-            internes. Elles ne sont jamais cédées, louées ou transférées à des tiers, ni transférées
-            hors de l'Union européenne.
+            <strong className="text-ink">Destinataires :</strong> les données ne sont jamais cédées
+            ni louées. Les messages envoyés via le formulaire de contact sont acheminés par notre
+            prestataire d'envoi d'e-mails <strong className="text-ink">Brevo</strong> (Sendinblue SAS,
+            France), agissant comme sous-traitant au sens du RGPD, dont les serveurs sont situés dans
+            l'Union européenne. Aucune donnée n'est transférée hors de l'Union européenne.
           </p>
           <p className="text-mute leading-relaxed text-justify">
             <strong className="text-ink">Vos droits :</strong> conformément au RGPD (UE 2016/679) et
