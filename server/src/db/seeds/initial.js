@@ -40,6 +40,10 @@ export async function seed(knex) {
       data: { ...SITE_CONFIG.approche, stats: SITE_CONFIG.stats },
     },
     {
+      type: 'feedyourcrew',
+      data: SITE_CONFIG.feedyourcrew,
+    },
+    {
       type: 'offres',
       data: SITE_CONFIG.offres,
     },

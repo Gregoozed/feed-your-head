@@ -29,7 +29,7 @@ import AdminShell from '../components/AdminShell.jsx';
 import { SECTION_EDITORS, SECTION_LABELS } from '../editors/SectionEditors.jsx';
 import { SETTINGS_EDITORS, SETTINGS_LABELS } from '../editors/SettingsEditors.jsx';
 
-const ADDABLE_TYPES = ['hero', 'approche', 'offres', 'methode', 'references', 'temoignages', 'ressources', 'apropos', 'contact'];
+const ADDABLE_TYPES = ['hero', 'approche', 'feedyourcrew', 'offres', 'methode', 'references', 'temoignages', 'ressources', 'apropos', 'contact'];
 
 export default function ContentEditor() {
   const [content, setContent] = useState(null);

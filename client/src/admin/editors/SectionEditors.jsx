@@ -75,62 +75,92 @@ function ApprocheEditor({ data, onChange }) {
 }
 
 // ──────────────────────────────────────────────────────────────────
-//  OFFRES (partenariat Twelv — 4 formules en onglets)
+//  FEED YOUR CREW (promo de l'outil d'aide à la décision)
 // ──────────────────────────────────────────────────────────────────
-function OffresEditor({ data, onChange }) {
+function FeedYourCrewEditor({ data, onChange }) {
   return (
     <>
       <Section title="En-tête">
-        <TextField label="Kicker (uppercase ocre)" value={data.kicker} onChange={(v) => onChange(set(data, 'kicker', v))} />
+        <TextField label="Kicker" value={data.kicker} onChange={(v) => onChange(set(data, 'kicker', v))} placeholder="Notre outil" />
         <TextField label="Titre — avant l'italique" value={data.heading?.before} onChange={(v) => onChange(setIn(data, ['heading', 'before'], v))} />
-        <TextField label="Mot en italique (ocre)" value={data.heading?.italic} onChange={(v) => onChange(setIn(data, ['heading', 'italic'], v))} />
-        <TextAreaField label="Sous-titre" value={data.subtitle} onChange={(v) => onChange(set(data, 'subtitle', v))} rows={2} />
-        <TextAreaField label="Pitch" value={data.pitch} onChange={(v) => onChange(set(data, 'pitch', v))} rows={4} />
+        <TextField label="Mot en italique (ocre)" value={data.heading?.italic} onChange={(v) => onChange(setIn(data, ['heading', 'italic'], v))} placeholder="Feed Your Crew" />
+        <TextAreaField label="Tagline (italique, sous le titre)" value={data.tagline} onChange={(v) => onChange(set(data, 'tagline', v))} rows={2} />
       </Section>
-      <Section title="Formules (onglets)">
+      <Section title="Paragraphes">
         <ListField
-          items={data.formulas ?? []}
-          onChange={(items) => onChange(set(data, 'formulas', items))}
-          newItem={() => ({
-            num: '',
-            duration: '',
-            title: '',
-            verb: '',
-            verbDesc: '',
-            tagline: '',
-            bullets: [''],
-          })}
-          addLabel="Ajouter une formule"
+          items={data.paragraphs ?? []}
+          onChange={(items) => onChange(set(data, 'paragraphs', items))}
+          newItem={() => ''}
+          addLabel="Ajouter un paragraphe"
+          renderItem={(item, setItem) => (
+            <TextAreaField label="Paragraphe" value={item} onChange={setItem} rows={3} />
+          )}
+        />
+      </Section>
+      <Section title="Points forts (3 recommandés)">
+        <ListField
+          items={data.features ?? []}
+          onChange={(items) => onChange(set(data, 'features', items))}
+          newItem={() => ({ title: '', description: '' })}
+          addLabel="Ajouter un point fort"
           renderItem={(item, setItem) => (
             <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <TextField label="N° (ex. 01)" value={item.num} onChange={(v) => setItem({ ...item, num: v })} />
-                <TextField label="Durée (ex. 20 jours)" value={item.duration} onChange={(v) => setItem({ ...item, duration: v })} />
-              </div>
               <TextField label="Titre" value={item.title} onChange={(v) => setItem({ ...item, title: v })} />
-              <div className="grid grid-cols-2 gap-3">
-                <TextField label="Verbe d'action (ex. Accélérer)" value={item.verb} onChange={(v) => setItem({ ...item, verb: v })} />
-                <TextField label="Tagline (italique)" value={item.tagline} onChange={(v) => setItem({ ...item, tagline: v })} />
-              </div>
-              <TextAreaField label="Description du verbe" value={item.verbDesc} onChange={(v) => setItem({ ...item, verbDesc: v })} rows={2} />
-              <ListField
-                items={item.bullets ?? []}
-                onChange={(b) => setItem({ ...item, bullets: b })}
-                newItem={() => ''}
-                addLabel="Ajouter un point"
-                label="Points clés"
-                renderItem={(b, setB) => <TextField label="" value={b} onChange={setB} />}
-              />
+              <TextField label="Description courte" value={item.description} onChange={(v) => setItem({ ...item, description: v })} />
             </div>
           )}
         />
       </Section>
-      <Section title="Bandeau final">
-        <TextAreaField label="Phrase de clôture" value={data.closer} onChange={(v) => onChange(set(data, 'closer', v))} rows={2} />
+      <Section title="Bouton d'appel à l'action">
+        <TextField label="Libellé" value={data.cta?.label} onChange={(v) => onChange(setIn(data, ['cta', 'label'], v))} placeholder="Découvrir feedyourcrew.com" />
+        <TextField label="Lien (URL externe)" value={data.cta?.href} onChange={(v) => onChange(setIn(data, ['cta', 'href'], v))} placeholder="https://feedyourcrew.com" />
+      </Section>
+      <Section title="Logo (optionnel)">
+        <ImagePicker
+          label="Logo Feed Your Crew"
+          value={data.logoUrl}
+          onChange={(v) => onChange(set(data, 'logoUrl', v))}
+        />
+      </Section>
+    </>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────
+//  OFFRES (5 domaines d'intervention — cartes empilées numérotées)
+// ──────────────────────────────────────────────────────────────────
+function OffresEditor({ data, onChange }) {
+  return (
+    <>
+      <Section title="Introduction">
+        <TextField label="Kicker (uppercase ocre)" value={data.kicker} onChange={(v) => onChange(set(data, 'kicker', v))} placeholder="Offres" />
+        <TextField label="Titre — avant l'italique" value={data.heading?.before} onChange={(v) => onChange(setIn(data, ['heading', 'before'], v))} placeholder="Cinq domaines pour" />
+        <TextField label="Mot en italique (ocre)" value={data.heading?.italic} onChange={(v) => onChange(setIn(data, ['heading', 'italic'], v))} placeholder="transformer" />
+        <TextField label="Titre — après l'italique" value={data.heading?.after} onChange={(v) => onChange(setIn(data, ['heading', 'after'], v))} placeholder=" les RH." />
+        <TextAreaField label="Sous-titre (optionnel)" value={data.subtitle} onChange={(v) => onChange(set(data, 'subtitle', v))} rows={2} />
+      </Section>
+      <Section title="Les 5 domaines">
+        <ListField
+          items={data.items ?? []}
+          onChange={(items) => onChange(set(data, 'items', items))}
+          newItem={() => ({ num: '', title: '', description: '' })}
+          addLabel="Ajouter un domaine"
+          renderItem={(item, setItem) => (
+            <div className="space-y-3">
+              <div className="grid grid-cols-3 gap-3">
+                <TextField label="N°" value={item.num} onChange={(v) => setItem({ ...item, num: v })} placeholder="01" />
+                <div className="col-span-2">
+                  <TextField label="Titre" value={item.title} onChange={(v) => setItem({ ...item, title: v })} />
+                </div>
+              </div>
+              <TextAreaField label="Description" value={item.description} onChange={(v) => setItem({ ...item, description: v })} rows={3} />
+            </div>
+          )}
+        />
       </Section>
       <Section title="Bouton d'appel à l'action">
         <TextField label="Libellé" value={data.cta?.label} onChange={(v) => onChange(setIn(data, ['cta', 'label'], v))} />
-        <TextField label="Lien (ancre ou URL)" value={data.cta?.href} onChange={(v) => onChange(setIn(data, ['cta', 'href'], v))} />
+        <TextField label="Lien (ancre ou URL)" value={data.cta?.href} onChange={(v) => onChange(setIn(data, ['cta', 'href'], v))} placeholder="#contact" />
       </Section>
     </>
   );
@@ -344,6 +374,7 @@ function ContactEditor({ data, onChange }) {
 export const SECTION_EDITORS = {
   hero: HeroEditor,
   approche: ApprocheEditor,
+  feedyourcrew: FeedYourCrewEditor,
   offres: OffresEditor,
   methode: MethodeEditor,
   references: ReferencesEditor,
@@ -356,6 +387,7 @@ export const SECTION_EDITORS = {
 export const SECTION_LABELS = {
   hero: 'Hero',
   approche: 'Approche',
+  feedyourcrew: 'Feed Your Crew',
   offres: 'Offres',
   methode: 'Méthode',
   references: 'Références',

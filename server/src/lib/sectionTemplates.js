@@ -3,6 +3,7 @@
 export const SECTION_TYPES = [
   'hero',
   'approche',
+  'feedyourcrew',
   'offres',
   'methode',
   'references',
@@ -17,7 +18,7 @@ export const SECTION_TEMPLATES = {
     title: { before: 'Nouveau', italic: 'titre', after: '.' },
     subtitle: 'Sous-titre à rédiger.',
     ctaPrimary: { label: 'Réserver un échange', href: '#contact' },
-    ctaSecondary: { label: 'Découvrir les offres', href: '#offres' },
+    ctaSecondary: { label: 'Découvrir Feed Your Crew', href: '#feedyourcrew' },
   },
   approche: {
     heading: { line1: 'Une lecture', line2Italic: 'sensible', line3: 'des organisations.' },
@@ -25,13 +26,28 @@ export const SECTION_TEMPLATES = {
     stats: [],
   },
   offres: {
-    kicker: 'En partenariat avec Twelv',
-    heading: { before: '4 offres.', italic: '1 ambition.' },
-    subtitle: 'Capitaliser les savoirs en performance durable.',
-    pitch: 'À compléter.',
-    formulas: [],
-    closer: 'Pas de réussite technologique sans aventure humaine.',
-    cta: { label: 'Échanger sur ce partenariat', href: '#contact' },
+    kicker: 'Offres',
+    heading: { before: 'Cinq domaines pour', italic: 'transformer', after: ' les RH.' },
+    subtitle: '',
+    items: [
+      { num: '01', title: 'Titre du domaine', description: 'Description à compléter.' },
+    ],
+    cta: { label: 'Échanger sur ces domaines', href: '#contact' },
+  },
+  feedyourcrew: {
+    kicker: 'Notre outil',
+    heading: { before: 'Anticiper avec', italic: 'Feed Your Crew' },
+    tagline: "Outil d'aide à la décision RH · user-friendly",
+    paragraphs: [
+      "Feed Your Crew éclaire les décisions RH sensibles avant qu'elles ne deviennent des urgences : anticipation des départs, cartographie des savoirs critiques, gestion des compétences.",
+    ],
+    features: [
+      { title: 'Risque de départ', description: 'Identifier les fragilités avant la crise.' },
+      { title: 'Criticité du savoir', description: 'Cartographier les savoirs vitaux à préserver.' },
+      { title: 'Gestion des compétences', description: 'Piloter les évolutions et les transmissions.' },
+    ],
+    cta: { label: 'Découvrir feedyourcrew.com', href: 'https://feedyourcrew.com' },
+    logoUrl: '',
   },
   methode: {
     intro: { heading: { before: 'Comment', italic: 'ça se passe.' }, subtitle: 'Sous-titre.' },

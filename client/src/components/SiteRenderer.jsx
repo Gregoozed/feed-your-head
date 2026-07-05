@@ -6,6 +6,7 @@ import ScrollUI from './ScrollUI.jsx';
 import Footer from './Footer.jsx';
 import Hero from './Hero.jsx';
 import Approche from './Approche.jsx';
+import FeedYourCrew from './FeedYourCrew.jsx';
 import Offres from './Offres.jsx';
 import Methode from './Methode.jsx';
 import References from './References.jsx';
@@ -16,6 +17,7 @@ import Contact from './Contact.jsx';
 const REGISTRY = {
   hero: Hero,
   approche: Approche,
+  feedyourcrew: FeedYourCrew,
   offres: Offres,
   methode: Methode,
   references: References,

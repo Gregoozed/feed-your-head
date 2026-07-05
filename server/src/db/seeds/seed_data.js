@@ -20,6 +20,7 @@ export const SITE_CONFIG = {
   },
   nav: [
     { label: 'Approche', href: '#approche' },
+    { label: 'Feed Your Crew', href: '#feedyourcrew' },
     { label: 'Offres', href: '#offres' },
     { label: 'Méthode', href: '#methode' },
     { label: 'À propos', href: '#apropos' },
@@ -35,7 +36,7 @@ export const SITE_CONFIG = {
     subtitle:
       'Audit, accompagnement et conduite du changement pour DRH et dirigeants qui veulent dépasser le prêt-à-penser managérial.',
     ctaPrimary: { label: 'Réserver un échange', href: '#contact' },
-    ctaSecondary: { label: 'Découvrir les offres', href: '#offres' },
+    ctaSecondary: { label: 'Découvrir Feed Your Crew', href: '#feedyourcrew' },
   },
   approche: {
     heading: { line1: 'Une lecture', line2Italic: 'sensible', line3: 'des organisations.' },
@@ -49,75 +50,59 @@ export const SITE_CONFIG = {
     { number: '30+', label: 'organisations accompagnées' },
     { number: '100%', label: 'missions sur-mesure' },
   ],
+  feedyourcrew: {
+    kicker: 'Notre outil',
+    heading: { before: 'Anticiper avec', italic: 'Feed Your Crew' },
+    tagline: "Outil d'aide à la décision RH · user-friendly",
+    paragraphs: [
+      "Feed Your Crew éclaire les décisions RH sensibles avant qu'elles ne deviennent des urgences : anticipation des départs, cartographie des savoirs critiques, gestion des compétences.",
+      "Une porte d'entrée simple : on commence par un diagnostic — technique & organisation, et ressources humaines — puis on déploie les solutions adaptées.",
+    ],
+    features: [
+      { title: 'Risque de départ', description: 'Identifier les fragilités avant la crise.' },
+      { title: 'Criticité du savoir', description: 'Cartographier les savoirs vitaux à préserver.' },
+      { title: 'Gestion des compétences', description: 'Piloter les évolutions et les transmissions.' },
+    ],
+    cta: { label: 'Découvrir feedyourcrew.com', href: 'https://feedyourcrew.com' },
+    logoUrl: '',
+  },
   offres: {
-    kicker: 'En partenariat avec Twelv',
-    heading: { before: '4 offres.', italic: '1 ambition.' },
-    subtitle: 'Capitaliser les savoirs en performance durable.',
-    pitch:
-      "Transmettre, c'est assurer l'avenir de votre entreprise. Avec Feed Your Head et Twelv, alliez tech et humain pour ancrer durablement les compétences au sein de vos équipes.",
-    formulas: [
+    kicker: 'Offres',
+    heading: { before: 'Cinq domaines pour', italic: 'transformer', after: ' les RH.' },
+    subtitle: '',
+    items: [
       {
         num: '01',
-        duration: '20 jours',
-        title: 'Transfert des savoirs critiques',
-        verb: 'Accélérer',
-        verbDesc: "l'intégration et la montée en compétences.",
-        tagline: 'Intervention express, impact immédiat.',
-        bullets: [
-          'Diagnostic express des savoirs critiques',
-          'Identification des priorités',
-          'Ateliers ciblés & pragmatiques',
-          'Transfert accéléré vers Twelv',
-          "Plan d'action express et sécurisé",
-        ],
+        title: 'Stratégie compétences & culture apprenante',
+        description:
+          "Faire de l'acquisition et de la cartographie dynamique des connaissances un levier de performance financière et humaine immédiat.",
       },
       {
         num: '02',
-        duration: '30 jours',
-        title: 'Managers : transmetteurs de savoirs',
-        verb: 'Sécuriser',
-        verbDesc: 'la transmission des savoirs.',
-        tagline: 'Les piliers de la performance.',
-        bullets: [
-          'Diagnostic des pratiques managériales',
-          'Formation des managers',
-          "Mise en place de rituels et d'outils simples",
-          'Twelv comme base de transmission',
-        ],
+        title: 'Conduite du changement & engagement',
+        description:
+          "La réussite d'un projet dépend à 80 % de l'adoption humaine. Nous appliquons les sciences du comportement pour ancrer le changement et apporter une réelle approbation.",
       },
       {
         num: '03',
-        duration: '40 jours',
-        title: 'La continuité des savoirs',
-        verb: 'Mobiliser',
-        verbDesc: 'les équipes dans la transmission.',
-        tagline: 'La bonne connaissance, au bon niveau, à chaque étape.',
-        bullets: [
-          'Diagnostic des processus',
-          'Conception des parcours de transmission',
-          'Formation des relais',
-          'Déploiement multi-équipes de Twelv',
-          'Pilotage & optimisation des parcours',
-        ],
+        title: 'Transformation digitale & gouvernance SIRH',
+        description:
+          "Une technologie sans vision n'est qu'un outil de plus. Nous mettons en œuvre des systèmes utiles et fiables pour atteindre vos objectifs stratégiques.",
       },
       {
         num: '04',
-        duration: '60 jours',
-        title: 'Gestion intégrale du savoir',
-        verb: 'Performer',
-        verbDesc: "durablement grâce à l'intelligence collective.",
-        tagline: 'Visibilité totale des savoirs.',
-        bullets: [
-          'Diagnostic complet de la gestion des savoirs',
-          'Architecture de transmission, modélisation des flux de savoirs',
-          'Déploiement et structuration de Twelv',
-          'Formation & accompagnement',
-          'Pilotage stratégique des savoirs',
-        ],
+        title: 'Recrutement & expérience collaborateur',
+        description:
+          "Optimiser la stratégie de recrutement de manière globale : programmes jeunes talents / séniors / profils pénuriques, parcours d'intégration, pour fidéliser vos talents dans une logique long terme.",
+      },
+      {
+        num: '05',
+        title: 'Culture, diversité & performance sociale',
+        description:
+          "La performance économique ne s'oppose plus à la performance sociale. Nous traduisons les valeurs d'entreprise en comportements opérationnels.",
       },
     ],
-    closer: 'Pas de réussite technologique sans aventure humaine.',
-    cta: { label: 'Échanger sur ce partenariat', href: '#contact' },
+    cta: { label: 'Échanger sur ces domaines', href: '#contact' },
   },
   methodeIntro: {
     heading: { before: 'Comment', italic: 'ça se passe.' },
